@@ -6,8 +6,8 @@ USE `AutoEscola` ;
 CREATE TABLE IF NOT EXISTS `AutoEscola`.`Aluno` (
   `idAluno` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(45) NOT NULL,
-  `cpf` VARCHAR(15) NOT NULL,
-  `rg` VARCHAR(20) NOT NULL,
+  `cpf` VARCHAR(11) NOT NULL,
+  `rg` VARCHAR(10) NOT NULL,
   `email` VARCHAR(45) NULL,
   `dataNascimento` DATE NOT NULL,
   `dataRegistro` DATETIME NOT NULL,
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `AutoEscola`.`Endereco` (
   `bairro` VARCHAR(45) NOT NULL,
   `cidade` VARCHAR(45) NOT NULL,
   `uf` CHAR(2) NOT NULL,
-  `cep` CHAR(9) NOT NULL,
+  `cep` CHAR(8) NOT NULL,
   `Aluno_idAluno` INT NOT NULL,
   PRIMARY KEY (`idEndereco`),
   INDEX `fk_Endereco_Aluno1_idx` (`Aluno_idAluno` ),
@@ -133,7 +133,6 @@ CREATE TABLE IF NOT EXISTS `AutoEscola`.`AulaTeorica` (
     ON DELETE CASCADE
     ON UPDATE CASCADE);
 
--- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `AutoEscola`.`AulaPratica` (
   `idAulaPratica` INT NOT NULL AUTO_INCREMENT,
   `id_Instrutor` INT NOT NULL,

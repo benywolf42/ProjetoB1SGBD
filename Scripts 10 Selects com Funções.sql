@@ -48,13 +48,13 @@ join funcionario func on sal.id_Funcionario = idFuncionario
 join instrutor inst on inst.id_Funcionario = idFuncionario
 where sal.Valor >= 1000.00;
 
-  -- Consultar o status do aluno irregular matriculado 
+  -- Consultar o status do aluno que está matriculado a mais de 30 dias e ainda não realizou seu pagamento
 select alu.nome, din.statusPagamento, mat.statusMatricula, mat.statusExameMedico, mat.statusExameCfc from matricula mat
 join aluno alu on alu.idAluno = mat.id_Aluno
 join dinheiroentrar din on din.id_Matricula = mat.idMatricula
-where mat.statusMatricula != 1 or
-mat.statusExameMedico != 1 or
-din.statusPagamento != 1;
+where mat.statusMatricula = 1
+and din.statusPagamento != 1
+and datediff(now(),mat.dataRegistro) > 30 ; -- parametro para determimnar a quantidade de dias que se deseja buscar (a partir de hoje)
 
 -- Listar todas as entradas de dinheiro de um aluno especifico
 select al.nome, al.cpf, ma.tipoCnh ,de.Valor from dinheiroentrar de
@@ -63,7 +63,6 @@ join aluno al on al.idAluno = ma.id_Aluno
 where al.nome = 'Gabriel Barbosa';
 
 -- Lista todos os funcionários que são professores e instrutores
-
 select func.idFuncionario, func.nome, prof.idProfessor, prof.registroCfc, inst.idInstrutor, inst.registroInstrutor, inst.tipoCnh from funcionario func
 join professor prof on prof.id_Funcionario = func.idFuncionario
 join instrutor inst on inst.id_Funcionario = func.idFuncionario
@@ -80,9 +79,28 @@ join funcionario fu on fu.idFuncionario = pf.id_Funcionario
 where SUBSTR(inicioAula,1,7) = '2018-11'
 or SUBSTR(fimAula,1,7) = '2018-11';
 
+-- Consultar alunos que já tem sua matricula vencida (1 ano) e ainda não acabaram de fazer as aulas práticas
+select alu.nome, din.statusPagamento, mat.statusMatricula, mat.statusExameMedico, mat.statusExameCfc 
+from matricula mat
+join aluno alu on alu.idAluno = mat.id_Aluno
+join dinheiroentrar din on din.id_Matricula = mat.idMatricula
+where  
+and mat.statusAulas != 1
+and datediff(now(),mat.dataRegistro) > 360 ; -- parametro que determina quantidade de dias em que a matricula venceu (360)
 
-    
-    
+select * from matricula;
+-- Deletar alunos que tem sua matriculal desativada
+delete from matricula
+where matricula.statusMatricula = 0
+and status
+and  idMatricula > 0; -- parametro usado apenas pra ignorar erro de segurança 1175 (Error Code: 1175. You are using safe update mode and you tried to update a table without a WHERE that uses a KEY column.  To disable safe mode, toggle the option in Preferences -> SQL Editor and reconnect.)
 
-    
-    
+select * from dinheiroentrar;
+-- Desativar registros de matriculas que já finalizaram o curso
+update matricula  
+set statusMatricula=0
+where statusAulas = 1
+and statusExameCfc = 1
+and statusExameMedico = 1
+and idMatricula > 0; -- parametro usado apenas pra ignorar erro de segurança 1175 (Error Code: 1175. You are using safe update mode and you tried to update a table without a WHERE that uses a KEY column.  To disable safe mode, toggle the option in Preferences -> SQL Editor and reconnect.)
+
