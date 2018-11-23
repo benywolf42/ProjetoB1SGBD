@@ -26,9 +26,9 @@ insert into salarios values (null, 2500, 1, 1, '2018-11-01', '2018-11-01');
 
 insert into aula values (null, '2018-11-01 12:00:00', '2018-11-01 13:00:00', 1);
 
-insert into aula values (null, '2018-11-11 13:00:00', '2018-11-01 14:00:00', 1);
+insert into aula values (null, '2018-11-11 13:00:00', '2018-11-11 14:00:00', 1);
 
-insert into aula values (null, '2018-11-21 15:00:00', '2018-11-01 16:00:00', 1);
+insert into aula values (null, '2018-11-21 15:00:00', '2018-11-21 16:00:00', 1);
 
 insert into aulapratica values (null, 1, 1, 1);
 
