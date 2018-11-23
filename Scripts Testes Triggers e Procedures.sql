@@ -1,17 +1,14 @@
-INSERT INTO `AutoEscola`.`Funcionario` (nome, salario) VALUES ("Funcionário Teste", 1000);
-INSERT INTO `AutoEscola`.`Funcionario` (nome, salario) VALUES ("Funcionário Teste2", 2000);
 
 SELECT * FROM  `AutoEscola`.`Funcionario`;
 
 -- testar primeira procedure
 CALL Pro_Pagar_Funcionarios;
 SELECT * FROM  `AutoEscola`.`Salarios`;
+-- select * from funcionario
+-- delete from Salarios where id_Gasto > 0
 
 -- Testar primeira trigger
-INSERT INTO `AutoEscola`.`Matricula`
-(tipoCnh, statusExameMedico, statusExameCfc, statusMatricula, 
-dataRegistro, id_Aluno, valorMonetario)
-VALUES ('A', 1, 1, 1, now(), 1, 1100);
+-- INSERT INTO `AutoEscola`.`Matricula` (tipoCnh, statusExameMedico, statusExameCfc, statusMatricula,dataRegistro, id_Aluno, valorMonetario) VALUES ('A', 1, 1, 1, now(), 1, 1100);
 SELECT * FROM `AutoEscola`.`Matricula`;
 SELECT * FROM `AutoEscola`.`DinheiroEntrar`;
 SELECT SUM(DinheiroEntrar.VALOR) FROM `AutoEscola`.`DinheiroEntrar`;

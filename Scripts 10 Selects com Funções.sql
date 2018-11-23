@@ -1,5 +1,7 @@
 use autoescola;
 
+drop database autoescola;
+
 -- Ver aulas práticas de um mês em especifico (ex: mês = 2018-11)
 select *  from aula aa
 join aulapratica ap on ap.id_Aula = aa.idAula
@@ -82,7 +84,8 @@ select alu.nome, din.statusPagamento, mat.statusMatricula, mat.statusExameMedico
 from matricula mat
 join aluno alu on alu.idAluno = mat.id_Aluno
 join dinheiroentrar din on din.id_Matricula = mat.idMatricula
-where mat.statusAulas != 1
+where  
+and mat.statusAulas != 1
 and datediff(now(),mat.dataRegistro) > 360 ; -- parametro que determina quantidade de dias em que a matricula venceu (360)
 
 select * from matricula;
@@ -101,3 +104,7 @@ and statusExameCfc = 1
 and statusExameMedico = 1
 and idMatricula > 0; -- parametro usado apenas pra ignorar erro de segurança 1175 (Error Code: 1175. You are using safe update mode and you tried to update a table without a WHERE that uses a KEY column.  To disable safe mode, toggle the option in Preferences -> SQL Editor and reconnect.)
 
+-- Verificar todos registros de pagamento em que o status consta como não pago porém a data de pagamento já está preenchida
+select * from DinheiroEntrar
+where dataPagamento IS NOT NULL
+and statusPagamento = 0;

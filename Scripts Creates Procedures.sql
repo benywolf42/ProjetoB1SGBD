@@ -3,12 +3,13 @@ delimiter $$
 CREATE PROCEDURE `Pro_Pagar_Funcionarios` ()
 BEGIN
 	INSERT INTO `AutoEscola`.`Salarios` (Valor, id_Funcionario, statusPagamento, pagamentoReferenteA, dataPagamento)(
-		select salario,
+		(select salario,
                 idFuncionario,
                 1,
                 CONCAT(SUBSTR(now(),1,7),'-01'),
                 now()
-		from `AutoEscola`.`Funcionario`);
+		from `AutoEscola`.`Funcionario`)
+	);
 END $$
 delimiter ;
 
@@ -18,7 +19,7 @@ delimiter $$
 CREATE PROCEDURE `Pro_Agregar_FLuxoDeCaixaMensalHistorico` (IN yyyymm VARCHAR(6))
 BEGIN
 	INSERT INTO `AutoEscola`.`FLuxoDeCaixaMensalHistorico` (mesReferente, entrada, saida)(
-		select 
+		(select 
 				CONCAT(SUBSTR(yyyymm,1,4),'-',SUBSTR(yyyymm,5,2),'-01'),
                 coalesce(SUM(DinheiroEntrar.Valor),0),
 				(select 
@@ -29,7 +30,8 @@ BEGIN
 				)
 		from `AutoEscola`.`DinheiroEntrar`
         where statusPagamento = 1
-        and CONCAT(SUBSTR(DinheiroEntrar.dataPagamento,1,4), SUBSTR(DinheiroEntrar.dataPagamento,6,2)) = yyyymm);
+        and CONCAT(SUBSTR(DinheiroEntrar.dataPagamento,1,4), SUBSTR(DinheiroEntrar.dataPagamento,6,2)) = yyyymm)
+	);
 END $$
 delimiter ;
 

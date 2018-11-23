@@ -1,3 +1,4 @@
+-- drop database AutoEscola
 -- Criar Database/Schema
 CREATE SCHEMA IF NOT EXISTS `AutoEscola` DEFAULT CHARACTER SET utf8 ;
 USE `AutoEscola` ;
