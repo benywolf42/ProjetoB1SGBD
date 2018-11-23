@@ -122,7 +122,7 @@ insert into aluno values (null, 'José do Milho Verde', '39240779722', '48396167
 
 insert into aluno values (null, 'Mayra Carvalho Ferreira de França', '23487968451', '4679823467', 'mayra@mail.com', '1994-07-26', '2018-01-15 21:15:30');
 
---INSERT INTO `AutoEscola`.`Aluno` (nome,  cpf, rg, email, dataNascimento, dataRegistro) VALUES ("Aluno Teste", "12345612342", "521425235", "teste@email.com", "1990-01-01", now());
+-- INSERT INTO `AutoEscola`.`Aluno` (nome,  cpf, rg, email, dataNascimento, dataRegistro) VALUES ("Aluno Teste", "12345612342", "521425235", "teste@email.com", "1990-01-01", now());
 
 /* =============================================== TELEFONE */
 
@@ -138,15 +138,15 @@ insert into telefone values (null, '11997634723', 5);
 
 /* =============================================== ENDEREÇOS */
 
-insert into endereco values (null, 'Rua Pedro Vicente', 700, 'Bloco 3', 'Jd Veloso', 'Osasco', 'SP', '01109-010', 1);
+insert into endereco values (null, 'Rua Pedro Vicente', 700, 'Bloco 3', 'Jd Veloso', 'Osasco', 'SP', '01109010', 1);
 
-insert into endereco values (null, 'Rua Barão de Rio Branco', 964, 'Casa', 'Centro', 'São Paulo', 'SP', '01213-020', 2);
+insert into endereco values (null, 'Rua Barão de Rio Branco', 964, 'Casa', 'Centro', 'São Paulo', 'SP', '01213020', 2);
 
-insert into endereco values (null, 'Rua Anemona', 25, 'Casa 02', 'Jd das Flores', 'Osasco', 'SP', '06254-003', 3);
+insert into endereco values (null, 'Rua Anemona', 25, 'Casa 02', 'Jd das Flores', 'Osasco', 'SP', '06254003', 3);
 
-insert into endereco values (null, 'Rua Heitor Penteado', 2413, 'AP 13', 'Sumarezinho', 'São Paulo', 'SP', '05543-020', 4);
+insert into endereco values (null, 'Rua Heitor Penteado', 2413, 'AP 13', 'Sumarezinho', 'São Paulo', 'SP', '05543020', 4);
 
-insert into endereco values (null, 'Rua Alberto Andaló', 24, 'AP 26', 'Centro', 'Guarulhos', 'SP', '07243-020', 5);
+insert into endereco values (null, 'Rua Alberto Andaló', 24, 'AP 26', 'Centro', 'Guarulhos', 'SP', '07243020', 5);
 
 /* =============================================== MATRICULAS */
 
@@ -159,6 +159,7 @@ insert into matricula values (null, 'AB', 1, 1, 1, 1, '2018-09-26', 3, 2000.00);
 insert into matricula values (null, 'B', 1, 0, 1, 1, '2018-10-15', 4, 900.00);
 
 insert into matricula values (null, 'AB', 1, 1, 1, 1, '2018-10-24', 5, 1800.00);
+
 
 /* =============================================== DINHEIROENTRAR */
 
